@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karoserihub.id - Fabrikasi & Modifikasi Kendaraan Komersial</title>
+    <!-- Google Fonts: Plus Jakarta Sans for clean, modern industrial look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fef2f2',
+                            100: '#fee2e2',
+                            200: '#fecaca',
+                            300: '#fca5a5',
+                            400: '#f87171',
+                            500: '#e02424',
+                            600: '#b91c1c',
+                            700: '#9b1900', // Rich red tone
+                            800: '#801500', // Dominant Primary Red (#801500)
+                            900: '#5a0f00', // Deep shade
+                            950: '#380900'  // Darkest tone
+                        },
+                        industrial: {
+                            light: '#f8fafc',
+                            card: '#ffffff',
+                            dark: '#0f172a'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .maroon-gradient {
+            background: linear-gradient(135deg, #801500 0%, #5a0f00 100%);
+        }
+        .hero-pattern {
+            background-color: #5a0f00;
+            background-image: radial-gradient(#801500 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 30px -5px rgba(128, 21, 0, 0.14);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #801500;
+            border-radius: 4px;
+        }
+    </style>
+
+    <script>
+        // Init theme immediately to prevent FOUC (flash of unstyled content)
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        })();
+
+        // Define toggleTheme in global scope immediately
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                if (typeof showToast === 'function') showToast("Mode terang diaktifkan");
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                if (typeof showToast === 'function') showToast("Mode gelap diaktifkan");
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 font-sans antialiased overflow-x-hidden selection:bg-brand-800 selection:text-white transition-colors duration-200">
+
+    <header class="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors duration-200">
+        <!-- Top bar info -->
+        <div class="bg-brand-900 text-brand-100 text-xs py-1.5 px-4 hidden md:block">
+            <div class="max-w-7xl mx-auto flex justify-between items-center">
+                <div class="flex items-center space-x-6">
+                    <span><i class="fa-solid fa-certificate text-amber-400 mr-1.5"></i> Bersertifikasi SRUT Kemenhub RI Resmi</span>
+                    <span><i class="fa-solid fa-shield-halved text-amber-400 mr-1.5"></i> Garansi Rangka Presisi 3 Tahun</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="mailto:Karoseriid@gmail.com" class="hover:text-white cursor-pointer transition flex items-center">
+                        <i class="fa-solid fa-envelope mr-1.5 text-amber-400"></i> Karoseriid@gmail.com
+                    </a>
+                    <a href="https://wa.me/6285721702603?text=Halo%20Karoserihub.id,%20saya%20ingin%20konsultasi%20layanan%20karoseri" target="_blank" class="hover:text-white cursor-pointer transition flex items-center">
+                        <i class="fa-brands fa-whatsapp text-emerald-400 mr-1.5 text-sm"></i> +62 857-2170-2603
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-11 h-11 rounded-xl bg-brand-800 text-white flex items-center justify-center font-black text-xl shadow-md group-hover:bg-brand-700 transition">
+                    <i class="fa-solid fa-truck-ramp-box"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-none">
+                        Karoseri<span class="text-brand-800 dark:text-brand-400">hub</span><span class="text-xs ml-0.5 px-1.5 py-0.5 rounded bg-brand-100 dark:bg-brand-950/80 text-brand-800 dark:text-brand-300 font-bold border dark:border-brand-800">.id</span>
+                    </span>
+                    <span class="text-[10px] uppercase tracking-widest text-slate-500 dark:text-slate-400 font-semibold mt-1">Solusi Rekayasa Karoseri Indonesia</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu Links -->
+            <div class="hidden lg:flex items-center space-x-8 text-sm font-semibold text-slate-700 dark:text-slate-200">
+                <a href="#produk" class="hover:text-brand-800 dark:hover:text-brand-400 transition">Produk</a>
+                <a href="#layanan" class="hover:text-brand-800 dark:hover:text-brand-400 transition">Layanan</a>
+                <a href="#tentang" class="hover:text-brand-800 dark:hover:text-brand-400 transition">Tentang Kami</a>
+                <a href="#artikel" class="hover:text-brand-800 dark:hover:text-brand-400 transition">Artikel</a>
+                <a href="#kalkulator" class="hover:text-brand-800 dark:hover:text-brand-400 transition flex items-center gap-1.5 text-xs bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    Simulasi Estimasi
+                </a>
+            </div>
+
+            <!-- Action CTA & Dark Mode Toggle -->
+            <div class="hidden sm:flex items-center space-x-3">
+                <!-- Theme Toggle Button Desktop -->
+                <button id="themeToggleBtn" onclick="toggleTheme()" aria-label="Ganti Mode Gelap/Terang" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-amber-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition flex items-center justify-center">
+                    <i class="fa-solid fa-moon text-base dark:hidden" id="themeIconDark"></i>
+                    <i class="fa-solid fa-sun text-base hidden dark:inline-block" id="themeIconLight"></i>
+                </button>
+
+                <a href="https://wa.me/6285721702603?text=Halo%20Karoserihub.id,%20saya%20ingin%20konsultasi%20pembuatan%20dan%20perizinan%20karoseri" target="_blank" class="px-5 py-2.5 rounded-xl bg-brand-800 text-white text-sm font-bold shadow-md hover:bg-brand-700 hover:shadow-lg transition flex items-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-lg text-emerald-400"></i>
+                    Konsultasi
+                </a>
+            </div>
+
+            <!-- Mobile Action & Hamburger Toggle -->
+            <div class="flex items-center gap-2 lg:hidden">
+                <!-- Mobile Dark Mode Button -->
+                <button onclick="toggleTheme()" aria-label="Ganti Mode Gelap/Terang" class="p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-amber-400">
+                    <i class="fa-solid fa-moon text-lg dark:hidden"></i>
+                    <i class="fa-solid fa-sun text-lg hidden dark:inline-block"></i>
+                </button>
+                <button id="mobileMenuBtn" aria-label="Buka Menu" class="p-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl" id="menuIcon"></i>
+                </button>
+            </div>
+        </nav>
+
+        <div id="mobileMenu" class="hidden lg:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-6 py-6 space-y-4 shadow-xl">
+            <a href="#produk" class="mobile-link block text-base font-semibold text-slate-800 dark:text-slate-200 hover:text-brand-800 dark:hover:text-brand-400">Produk</a>
+            <a href="#layanan" class="mobile-link block text-base font-semibold text-slate-800 dark:text-slate-200 hover:text-brand-800 dark:hover:text-brand-400">Layanan</a>
+            <a href="#tentang" class="mobile-link block text-base font-semibold text-slate-800 dark:text-slate-200 hover:text-brand-800 dark:hover:text-brand-400">Tentang Kami</a>
+            <a href="#artikel" class="mobile-link block text-base font-semibold text-slate-800 dark:text-slate-200 hover:text-brand-800 dark:hover:text-brand-400">Artikel</a>
+            <a href="#kalkulator" class="mobile-link block text-base font-semibold text-slate-800 dark:text-slate-200 flex items-center justify-between">
+                <span>Simulasi Estimasi Biaya</span>
+                <span class="text-xs bg-brand-100 dark:bg-brand-950 text-brand-800 dark:text-brand-300 border dark:border-brand-800 px-2 py-0.5 rounded font-bold">Interaktif</span>
+            </a>
+            <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-col gap-2">
+                <a href="https://wa.me/6285721702603?text=Halo%20Karoserihub.id,%20saya%20ingin%20konsultasi%20pembuatan%20dan%20perizinan%20karoseri" target="_blank" class="w-full text-center py-3 bg-brand-800 text-white rounded-xl font-bold shadow flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-lg text-emerald-400"></i> Konsultasi Sekarang
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative bg-slate-900 text-white overflow-hidden hero-pattern">
+        <!-- Deep red ambient lighting overlay -->
+        <div class="absolute inset-0 bg-gradient-to-r from-brand-950 via-brand-900/90 to-slate-950/80 pointer-events-none"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6">
+                    <!-- Verification Badge -->
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-800/80 border border-brand-500/40 text-brand-100 text-xs sm:text-sm font-medium backdrop-blur">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                        <span>Spesialis Karoseri Logistik, Tambang & Kendaraan Khusus</span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                        Standar Baru Ketangguhan <span class="text-brand-300 underline decoration-brand-500 decoration-4 underline-offset-4">Karoseri Truk</span> & Bus Indonesia.
+                    </h1>
+
+                    <p class="text-slate-300 text-base sm:text-lg max-w-2xl font-normal leading-relaxed">
+                        Kami merancang dan memfabrikasi bodi kendaraan komersial dengan material <strong class="text-white">High-Tensile Steel</strong>, presisi robotik laser, serta jaminan kelengkapan dokumen resmi <strong class="text-white">SRUT Kemenhub</strong> untuk operasional tanpa kendala.
+                    </p>
+
+                    <!-- Key CTA buttons -->
+                    <div class="flex flex-wrap items-center gap-4 pt-2">
+                        <a href="https://wa.me/6285721702603?text=Halo%20Karoserihub.id,%20saya%20ingin%20konsultasi%20langsung%20spesifikasi%20dan%20harga%20karoseri" target="_blank" class="px-7 py-4 rounded-xl bg-white text-brand-900 font-bold hover:bg-slate-100 transition shadow-lg flex items-center gap-2 text-sm sm:text-base">
+                            <i class="fa-brands fa-whatsapp text-emerald-600 text-xl"></i>
+                            Konsultasi WhatsApp
+                        </a>
+                        <a href="#kalkulator" class="px-7 py-4 rounded-xl bg-brand-800/80 border border-brand-500 text-white font-semibold hover:bg-brand-700 transition flex items-center gap-2 text-sm sm:text-base">
+                            <i class="fa-solid fa-calculator"></i>
+                            Simulasi Spek & Harga
+                        </a>
+                    </div>
+
+                    <!-- Highlight Metrics Strip -->
+                    <div class="pt-8 border-t border-brand-800/60 grid grid-cols-2 sm:grid-cols-4 gap-6">
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-extrabold text-white">1.850+</p>
+                            <p class="text-xs text-brand-200 uppercase font-medium mt-0.5">Unit Beroperasi</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-extrabold text-white">100%</p>
+                            <p class="text-xs text-brand-200 uppercase font-medium mt-0.5">Lolos Uji SRUT</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-extrabold text-white">3 Tahun</p>
+                            <p class="text-xs text-brand-200 uppercase font-medium mt-0.5">Garansi Rangka</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-extrabold text-white">15 Hari</p>
+                            <p class="text-xs text-brand-200 uppercase font-medium mt-0.5">Rata-rata Lead Time</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 relative">
+                    <div class="bg-white/10 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-white/20 shadow-2xl relative">
+                        <div class="absolute -top-3 -right-3 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+                            Ready Stock Chassis Partner
+                        </div>
+                        
+                        <!-- Visual Illustration Card -->
+                        <div class="rounded-2xl overflow-hidden bg-gradient-to-b from-brand-900 to-slate-900 border border-brand-700/50 p-6 text-center space-y-4">
+                            <div class="h-44 flex items-center justify-center text-brand-300">
+                                <i class="fa-solid fa-truck-moving text-7xl sm:text-8xl drop-shadow-lg"></i>
+                            </div>
+                            <div class="bg-white/10 p-3 rounded-xl backdrop-blur text-left">
+                                <div class="flex justify-between items-center text-xs font-semibold text-brand-200">
+                                    <span>Model Unggulan Bulan Ini</span>
+                                    <span class="text-emerald-300">ISO 9001:2015</span>
+                                </div>
+                                <h3 class="text-white font-bold text-lg mt-1">Wingbox Heavy Duty 9.8M</h3>
+                                <p class="text-xs text-slate-300">Rangka SPHC Hydroformed + Dinding Alumunium Corrugated Anti-Bocor</p>
+                            </div>
+                        </div>
+
+                        <!-- Brand Partner Logos -->
+                        <div class="mt-6 pt-4 border-t border-white/10">
+                            <p class="text-xs text-slate-300 font-medium mb-3 text-center">Kompatibilitas Chassis Resmi Terverifikasi:</p>
+                            <div class="flex items-center justify-around text-slate-200 text-xs sm:text-sm font-bold tracking-wider opacity-85">
+                                <span>HINO</span>
+                                <span>ISUZU</span>
+                                <span>FUSO</span>
+                                <span>MERCEDES</span>
+                                <span>UD TRUCKS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="produk" class="py-20 bg-white dark:bg-slate-900 transition-colors duration-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-3 mb-12">
+                <span class="px-3.5 py-1 rounded-full bg-brand-50 dark:bg-brand-950/80 text-brand-800 dark:text-brand-300 text-xs font-bold uppercase tracking-wider border border-brand-200 dark:border-brand-800">
+                    Katalog Produk
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                    Ragam Produk Bodi Karoseri Kendaraan Niaga
+                </h2>
+                <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base">
+                    Pilih kategori kendaraan komersial untuk melihat spesifikasi teknis, ketahanan material, dan estimasi waktu pengerjaan.
+                </p>
+
+                <!-- Filter Category Tabs -->
+                <div class="flex flex-wrap justify-center gap-2 pt-4" id="categoryFilterContainer">
+                    <button onclick="filterCategory('all')" class="cat-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition bg-brand-800 text-white shadow-sm" data-category="all">
+                        Semua Kategori
+                    </button>
+                    <button onclick="filterCategory('logistik')" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700" data-category="logistik">
+                        Logistik & Box
+                    </button>
+                    <button onclick="filterCategory('tambang')" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700" data-category="tambang">
+                        Dump & Heavy Hauler
+                    </button>
+                    <button onclick="filterCategory('penumpang')" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700" data-category="penumpang">
+                        Bus & Microbus
+                    </button>
+                    <button onclick="filterCategory('khusus')" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700" data-category="khusus">
+                        Kendaraan Khusus / Tangki
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="productGrid">
+
+                <!-- Product 1: Wingbox -->
+                <div class="product-card group bg-white dark:bg-slate-800/90 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-brand-700 dark:hover:border-brand-500 transition-all duration-300 overflow-hidden custom-shadow flex flex-col" data-cat="logistik">
+                    <div class="relative bg-slate-100 dark:bg-slate-900/60 h-52 flex items-center justify-center p-6 bg-gradient-to-tr from-slate-100 dark:from-slate-900 to-brand-50/40 dark:to-brand-950/40">
+                        <i class="fa-solid fa-truck-ramp-box text-6xl text-brand-800/80 dark:text-brand-400 group-hover:scale-110 transition duration-300"></i>
+                        <span class="absolute top-4 left-4 bg-brand-800 text-white text-[11px] font-bold px-2.5 py-1 rounded-md">Logistik Cepat</span>
+                        <span class="absolute top-4 right-4 bg-white/90 dark:bg-slate-900/90 text-slate-800 dark:text-slate-200 text-[11px] font-bold px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700">Lead Time: 18 Hari</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-1">
+                                <span>Chassis: Fuso / Hino / Isuzu</span>
+                                <span class="text-emerald-700 dark:text-emerald-400 font-semibold"><i class="fa-solid fa-shield mr-1"></i>Garansi 3 Th</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-brand-800 dark:group-hover:text-brand-400 transition">Wingbox Hydraulic 3 Pintu</h3>
+                            <p class="text-slate-600 dark:text-slate-300 text-xs mt-2 leading-relaxed">
+                                Sistem hidrolik buka samping otomatis, lantai bordes tebal 4mm, kedap air dengan gasket seal silikon industri.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between">
+                            <div>
+                                <span class="text-[11px] text-slate-400 block">Mulai dari</span>
+                                <span class="text-base font-extrabold text-brand-900 dark:text-brand-300">Rp 145.000.000*</span>
+                            </div>
+                            <button onclick="openSpecModal('Wingbox Hydraulic', 'Cocok untuk logistik retail dan FMCG. Dilengkapi motor hidrolik DC 24V teruji, sistem pengunci hidrolik anti-anjlok, dan dinding alumunium komposit tahan korosi.', '145 - 210 Juta', 'Hino Ranger / Isuzu Giga / Fuso Fighter', '9.6m x 2.5m x 2.6m')" class="px-3.5 py-2 rounded-lg bg-brand-50 dark:bg-brand-950 text-brand-800 dark:text-brand-300 font-bold text-xs hover:bg-brand-800 hover:text-white transition border dark:border-brand-800">
+                                Spek Lengkap
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2: Box Freezer (Reefer) -->
+                <div class="product-card group bg-white dark:bg-slate-800/90 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-brand-700 dark:hover:border-brand-500 transition-all duration-300 overflow-hidden custom-shadow flex flex-col" data-cat="logistik">
+                    <div class="relative bg-slate-100 dark:bg-slate-900/60 h-52 flex items-center justify-center p-6 bg-gradient-to-tr from-slate-100 dark:from-slate-900 to-sky-50 dark:to-sky-950/40">
+                        <i class="fa-solid fa-snowflake text-6xl text-sky-700/80 dark:text-sky-400 group-hover:scale-110 transition duration-300"></i>
+                        <span class="absolute top-4 left-4 bg-sky-700 text-white text-[11px] font-bold px-2.5 py-1 rounded-md">Cold Chain</span>
+                        <span class="absolute top-4 right-4 bg-white/90 dark:bg-slate-900/90 text-slate-800 dark:text-slate-200 text-[11px] font-bold px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700">Suhu: Hingga -25°C</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-1">
+                                <span>Chassis: Dutro / Canter / Elf</span>
+                                <span class="text-emerald-700 dark:text-emerald-400 font-semibold"><i class="fa-solid fa-shield mr-1"></i>Garansi 2 Th</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-brand-800 dark:group-hover:text-brand-400 transition">Box Pendingin (Reefer Box)</h3>
+                            <p class="text-slate-600 dark:text-slate-300 text-xs mt-2 leading-relaxed">
+                                Insulasi Polyurethane Foam densitas tinggi 45kg/m³ tanpa celah thermal bridge, lapisan Food Grade fiberglass.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between">
+                            <div>
+                                <span class="text-[11px] text-slate-400 block">Mulai dari</span>
+                                <span class="text-base font-extrabold text-brand-900 dark:text-brand-300">Rp 115.000.000*</span>
+                            </div>
+                            <button onclick="openSpecModal('Box Pendingin / Reefer Box', 'Spesialis pengangkutan daging, es krim, vaksin & produk farmasi. Dilengkapi saluran drainase higienis dan bracket mesin pendingin Thermo King / Denso.', '115 - 195 Juta (Non-Mesin)', 'Isuzu Elf NMR / Canter FE74 / Dutro 130HD', '4.3m x 2.0m x 2.0m')" class="px-3.5 py-2 rounded-lg bg-brand-50 dark:bg-brand-950 text-brand-800 dark:text-brand-300 font-bold text-xs hover:bg-brand-800 hover:text-white transition border dark:border-brand-800">
+                                Spek Lengkap
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3: Dump Truck Tambang -->
+                <div class="product-card group bg-white dark:bg-slate-800/90 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-brand-700 dark:hover:border-brand-500 transition-all duration-300 overflow-hidden custom-shadow flex flex-col" data-cat="tambang">
+                    <div class="relative bg-slate-100 dark:bg-slate-900/60 h-52 flex items-center justify-center p-6 bg-gradient-to-tr from-slate-100 dark:from-slate-900 to-amber-50 dark:to-amber-950/40">
+                        <i class="fa-solid fa-truck-field text-6xl text-amber-800/80 dark:text-amber-400 group-hover:scale-110 transition duration-300"></i>
+                        <span class="absolute top-4 left-4 bg-amber-800 text-white text-[11px] font-bold px-2.5 py-1 rounded-md">Heavy Duty Mining</span>
+                        <span class="absolute top-4 right-4 bg-white/90 dark:bg-slate-900/90 text-slate-800 dark:text-slate-200 text-[11px] font-bold px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700">Kapasitas: 24-30 m³</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-1">
+                                <span>Chassis: 6x4 & 8x4 Heavy Trucks</span>
+                                <span class="text-emerald-700 dark:text-emerald-400 font-semibold"><i class="fa-solid fa-shield mr-1"></i>Garansi 3 Th</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-brand-800 dark:group-hover:text-brand-400 transition">Dump Body Hardox / High-Tensile</h3>
+                            <p class="text-slate-600 dark:text-slate-300 text-xs mt-2 leading-relaxed">
+                                Plat baja Hardox 450 anti-aus untuk galian nikel, batubara, dan quary. Silinder hoist hidrolik Hyva original.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between">
+                            <div>
+                                <span class="text-[11px] text-slate-400 block">Mulai dari</span>
+                                <span class="text-base font-extrabold text-brand-900 dark:text-brand-300">Rp 185.000.000*</span>
+                            </div>
+                            <button onclick="openSpecModal('Dump Truck Heavy Duty', 'Dirancang khusus untuk medan berat off-road. Menggunakan konstruksi sub-frame penguat kanal U ganda, canopi kabin proteksi FOPS, serta sistem pengait pintu belakang pneumatik.', '185 - 280 Juta', 'Hino 500 / Fuso Fighter FN / Scania P360', '5.8m x 2.4m x 1.7m (24m³)')" class="px-3.5 py-2 rounded-lg bg-brand-50 dark:bg-brand-950 text-brand-800 dark:text-brand-300 font-bold text-xs hover:bg-brand-800 hover:text-white transition border dark:border-brand-800">
+                                Spek Lengkap
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4: Microbus Pariwisata -->
+                <div class="product-card group bg-white dark:bg-slate-800/90 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-brand-700 dark:hover:border-brand-500 transition-all duration-300 overflow-hidden custom-shadow flex flex-col" data-cat="penumpang">
+                    <div class="relative bg-slate-100 dark:bg-slate-900/60 h-52 flex items-center justify-center p-6 bg-gradient-to-tr from-slate-100 dark:from-slate-900 to-brand-50/50 dark:to-brand-950/40">
+                        <i class="fa-solid fa-bus-simple text-6xl text-brand-800/80 dark:text-brand-400 group-hover:scale-110 transition duration-300"></i>
+                        <span class="absolute top-4 left-4 bg-brand-800 text-white text-[11px] font-bold px-2.5 py-1 rounded-md">Pariwisata & Travel</span>
+                        <span class="absolute top-4 right-4 bg-white/90 dark:bg-slate-900/90 text-slate-800 dark:text-slate-200 text-[11px] font-bold px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700">16 - 20 Seats</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-1">
+                                <span>Chassis: HiAce / Isuzu Elf NLR-L</span>
+                                <span class="text-emerald-700 dark:text-emerald-400 font-semibold"><i class="fa-solid fa-shield mr-1"></i>Garansi 2 Th</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-brand-800 dark:group-hover:text-brand-400 transition">Microbus Luxury Executive</h3>
+                            <p class="text-slate-600 dark:text-slate-300 text-xs mt-2 leading-relaxed">
+                                Interior mewah dengan peredam getaran 3 lapis, kursi reclining kulit sintetis, ambient lighting, dan USB charging port tiap seat.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between">
+                            <div>
+                                <span class="text-[11px] text-slate-400 block">Mulai dari</span>
+                                <span class="text-base font-extrabold text-brand-900 dark:text-brand-300">Rp 160.000.000*</span>
+                            </div>
+                            <button onclick="openSpecModal('Microbus Luxury Executive', 'Interior berkelas maskapai, plafon thermoforming berestetika tinggi, AC ducting kisi-kisi per penumpang, bagasi lega, dan sistem audio visual android entertainment.', '160 - 240 Juta (Bodi & Interior)', 'Isuzu Elf NLR 55 BLX / Canter FE 71', '16 - 20 Kursi Reclining')" class="px-3.5 py-2 rounded-lg bg-brand-50 dark:bg-brand-950 text-brand-800 dark:text-brand-300 font-bold text-xs hover:bg-brand-800 hover:text-white transition border dark:border-brand-800">
+                                Spek Lengkap
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5: Tangki CPO / Kimia -->
+                <div class="product-card group bg-white dark:bg-slate-800/90 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-brand-700 dark:hover:border-brand-500 transition-all duration-300 overflow-hidden custom-shadow flex flex-col" data-cat="khusus">
+                    <div class="relative bg-slate-100 dark:bg-slate-900/60 h-52 flex items-center justify-center p-6 bg-gradient-to-tr from-slate-100 dark:from-slate-900 to-indigo-50 dark:to-indigo-950/40">
+                        <i class="fa-solid fa-gas-pump text-6xl text-slate-700 dark:text-slate-400 group-hover:scale-110 transition duration-300"></i>
+                        <span class="absolute top-4 left-4 bg-slate-800 dark:bg-slate-700 text-white text-[11px] font-bold px-2.5 py-1 rounded-md">Tangki Cairan</span>
+                        <span class="absolute top-4 right-4 bg-white/90 dark:bg-slate-900/90 text-slate-800 dark:text-slate-200 text-[11px] font-bold px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700">5.000L - 24.000L</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-1">
+                                <span>Chassis: Tronton / Engkel Rigit</span>
+                                <span class="text-emerald-700 dark:text-emerald-400 font-semibold"><i class="fa-solid fa-shield mr-1"></i>Sertifikat Uji Kalibrasi</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-brand-800 dark:group-hover:text-brand-400 transition">Tangki Stainless / Besi SUS 304</h3>
+                            <p class="text-slate-600 dark:text-slate-300 text-xs mt-2 leading-relaxed">
+                                Pengelasan orbital robotic anti-bocor, sekat baffle peredam goncangan cairan, manhole standar keselamatan Migas & Kemenhub.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between">
+                            <div>
+                                <span class="text-[11px] text-slate-400 block">Mulai dari</span>
+                                <span class="text-base font-extrabold text-brand-900 dark:text-brand-300">Rp 175.000.000*</span>
+                            </div>
+                            <button onclick="openSpecModal('Tangki Stainless Steel SUS 304', 'Didesain khusus untuk muatan CPO pangan atau bahan kimia korosif. Finis poles mirror/dull, kelengkapan catwalk anti-slip keselamatan kerja, pipa discharge terintegrasi.', '175 - 320 Juta', 'Hino FL260 / Isuzu FVR / Volvo', '16.000 Liter (Multi-kompartemen)')" class="px-3.5 py-2 rounded-lg bg-brand-50 dark:bg-brand-950 text-brand-800 dark:text-brand-300 font-bold text-xs hover:bg-brand-800 hover:text-white transition border dark:border-brand-800">
+                                Spek Lengkap
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6: Mobil Khusus Ambulans & Rescue -->
+                <div class="product-card group bg-white dark:bg-slate-800/90 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-brand-700 dark:hover:border-brand-500 transition-all duration-300 overflow-hidden custom-shadow flex flex-col" data-cat="khusus">
+                    <div class="relative bg-slate-100 dark:bg-slate-900/60 h-52 flex items-center justify-center p-6 bg-gradient-to-tr from-slate-100 dark:from-slate-900 to-rose-50 dark:to-rose-950/40">
+                        <i class="fa-solid fa-truck-medical text-6xl text-brand-700 dark:text-brand-400 group-hover:scale-110 transition duration-300"></i>
+                        <span class="absolute top-4 left-4 bg-brand-700 text-white text-[11px] font-bold px-2.5 py-1 rounded-md">Kendaraan Medis</span>
+                        <span class="absolute top-4 right-4 bg-white/90 dark:bg-slate-900/90 text-slate-800 dark:text-slate-200 text-[11px] font-bold px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700">Standar Dinkes</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-1">
+                                <span>Chassis: HiAce / GranMax / APV</span>
+                                <span class="text-emerald-700 dark:text-emerald-400 font-semibold"><i class="fa-solid fa-shield mr-1"></i>Lulus Akreditasi</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-brand-800 dark:group-hover:text-brand-400 transition">Ambulans Emergency & Jenazah</h3>
+                            <p class="text-slate-600 dark:text-slate-300 text-xs mt-2 leading-relaxed">
+                                Modifikasi interior lengkap lantai vinyl antibakteri, bracket oksigen sentral, sirine LED strobe bar, dan stretcher otomatis.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between">
+                            <div>
+                                <span class="text-[11px] text-slate-400 block">Mulai dari</span>
+                                <span class="text-base font-extrabold text-brand-900 dark:text-brand-300">Rp 65.000.000*</span>
+                            </div>
+                            <button onclick="openSpecModal('Modifikasi Ambulans Standar Dinkes', 'Pilihan paket tipe Transport, Emergency Trauma, hingga Mobile Clinic. Dilengkapi lemari medis composite anti-jamur, inverter listrik murni 220V, dan lampu periksa LED.', '65 - 190 Juta (Paket Modifikasi)', 'Toyota HiAce Commuter / Wuling Confero / Gran Max', 'Paket Tipe A / B / C Dinkes')" class="px-3.5 py-2 rounded-lg bg-brand-50 dark:bg-brand-950 text-brand-800 dark:text-brand-300 font-bold text-xs hover:bg-brand-800 hover:text-white transition border dark:border-brand-800">
+                                Spek Lengkap
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <p class="text-center text-xs text-slate-500 dark:text-slate-400 mt-8">
+                *Estimasi harga fabrikasi bodi (di luar harga sasis kendaraan). Harga final ditentukan oleh spesifikasi detail material dan opsi aksesoris.
+            </p>
+        </div>
+    </section>
+
+    <section id="layanan" class="py-20 bg-slate-100/80 dark:bg-slate-950 border-y border-slate-200 dark:border-slate-800 transition-colors duration-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-3 mb-14">
+                <span class="px-3.5 py-1 rounded-full bg-brand-50 dark:bg-brand-950 text-brand-800 dark:text-brand-300 text-xs font-bold uppercase tracking-wider border border-brand-200 dark:border-brand-800">
+                    Layanan Terpadu
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                    Layanan Fabrikasi, Modifikasi & Legalitas Kendaraan
+                </h2>
+                <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base">
+                    Solusi komprehensif satu pintu: dari desain rekayasa bodi, perakitan presisi tinggi, hingga pengurusan sertifikasi hukum transportasi resmi.
+                </p>
+            </div>
+
+            <!-- Grid 6 Layanan Surat & Perizinan -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Service 1: SRUT -->
+                <div class="bg-white dark:bg-slate-900 p-7 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-brand-700 dark:hover:border-brand-500 transition duration-300 shadow-sm flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-950 text-brand-800 dark:text-brand-300 flex items-center justify-center text-2xl font-bold group-hover:bg-brand-800 group-hover:text-white transition">
+                            <i class="fa-solid fa-file-contract"></i>
+                        </div>
+                        <div>
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-brand-800 dark:text-brand-400">Kemenhub RI</span>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-0.5">Urus Izin SRUT (Uji Tipe)</h3>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-300 text-xs leading-relaxed">
+                            Penerbitan <strong>Sertifikat Registrasi Uji Tipe (SRUT)</strong> fisik maupun elektronik (e-SRUT). Wajib untuk setiap unit baru sebelum diterbitkan STNK & BPKB kendaraan niaga.
+                        </p>
+                        <ul class="text-xs text-slate-500 dark:text-slate-400 space-y-1.5 border-t border-slate-100 dark:border-slate-800 pt-3">
+                            <li><i class="fa-solid fa-check text-emerald-600 dark:text-emerald-400 mr-1.5"></i> SRUT Kendaraan Barang (Box, Dump, Tangki)</li>
+                            <li><i class="fa-solid fa-check text-emerald-600 dark:text-emerald-400 mr-1.5"></i> SRUT Kendaraan Penumpang & Bus</li>
+                            <li><i class="fa-solid fa-check text-emerald-600 dark:text-emerald-400 mr-1.5"></i> Garansi Nomor Rangka & Mesin Sesuai Database</li>
+                        </ul>
+                    </div>
+                    <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                        <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Estimasi: 7-14 Hari Kerja</span>
+                        <a href="https://wa.me/6285721702603?text=Halo%20Karoserihub.id,%20saya%20ingin%20konsultasi%20pengurusan%20Izin%20SRUT" target="_blank" class="px-3.5 py-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 hover:bg-emerald-600 hover:text-white font-bold text-xs transition flex items-center gap-1.5 border dark:border-emerald-800">
+                            <i class="fa-brands fa-whatsapp text-sm"></i>
+                            Konsultasi SRUT
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 2: BPKB & STNK Rubah Bentuk -->
+                <div class="bg-white dark:bg-slate-900 p-7 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-brand-700 dark:hover:border-brand-500 transition duration-300 shadow-sm flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 flex items-center justify-center text-2xl font-bold group-hover:bg-amber-600 group-hover:text-white transition">
+                            <i class="fa-solid fa-id-card"></i>
+                        </div>
+                        <div>
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400">Ditlantas Polri / Samsat</span>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-0.5">Urus BPKB & STNK (Rubah Bentuk)</h3>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-300 text-xs leading-relaxed">
+                            Pengurusan <strong>Rubah Bentuk Sifat (Rubentina)</strong> di BPKB & STNK. Meliputi penerbitan Faktur Karoseri resmi, surat rekomendasi ubah bentuk dari Bak ke Box/Wingbox/Dump.
+                        </p>
+                        <ul class="text-xs text-slate-500 dark:text-slate-400 space-y-1.5 border-t border-slate-100 dark:border-slate-800 pt-3">
+                            <li><i class="fa-solid fa-check text-emerald-600 dark:text-emerald-400 mr-1.5"></i> Penerbitan Faktur Karoseri Resmi Bersertifikat</li>
+                            <li><i class="fa-solid fa-check text-emerald-600 dark:text-emerald-400 mr-1.5"></i> Pembaruan Data Bentuk di Buku BPKB</li>
+                            <li><i class="fa-solid fa-check text-emerald-600 dark:text-emerald-400 mr-1.5"></i> Penyesuaian STNK & TNKB Plat Hitam/Kuning</li>
+                        </ul>
+                    </div>
+                    <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                        <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Legal 100% Ditlantas</span>
+                        <a href="https://wa.me/6285721702603?text=Halo%20Karoserihub.id,%20saya%20ingin%20konsultasi%20pengurusan%20Rubah%20Bentuk%20BPKB%20STNK" target="_blank" class="px-3.5 py-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 hover:bg-emerald-600 hover:text-white font-bold text-xs transition flex items-center gap-1.5 border dark:border-emerald-800">
+                            <i class="fa-brands fa-whatsapp text-sm"></i>
+                            Konsultasi BPKB
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 3: SKRB Rancang Bangun -->
+                <div class="bg-white dark:bg-slate-900 p-7 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-brand-700 dark:hover:border-brand-500 transition duration-300 shadow-sm flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 flex items-center justify-center text-2xl font-bold group-hover:bg-blue-700 group-hover:text-white transition">
+                            <i class="fa-solid fa-compass-drafting"></i>
+                        </div>
+                        <div>
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-blue-700 dark:text-blue-400">Ditjen Hubdat</span>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-0.5">Pengesahan SKRB Gambar Teknik</h3>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-300 text-xs leading-relaxed">
+                            Pengurusan <strong>Surat Keputusan Rancang Bangun (SKRB)</strong>. Wajib bagi modifikasi chassis baru, perpanjangan dimensi wheel base, maupun model karoseri kustom non-standar.
+                        </p>
+                        <ul class="text-xs text-slate-500 dark:text-slate-400 space-y-1.5 border-t border-slate-100 dark:border-slate-800 pt-3">
+                            <li><i class="fa-solid fa-check text-emerald-600 dark:text-emerald-400 mr-1.5"></i> Gambar Teknik Blueprint 2D & 3D Otomotif</li>
+                            <li><i class="fa-solid fa-check text-emerald-600 dark:text-emerald-400 mr-1.5"></i> Kalkulasi Distribusi Beban Axle & GVM</li>
+                            <li><i class="fa-solid fa-check text-emerald-600 dark:text-emerald-400 mr-1.5"></i> Pengesahan Kementerian Perhubungan Pusat</li>
+                        </ul>
+                    </div>
+                    <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                        <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Termasuk Simulasi CAD</span>
+                        <a href="https://wa.me/6285721702603?text=Halo%20Karoserihub.id,%20saya%20ingin%20konsultasi%20pengurusan%20SKRB%20Rancang%20Bangun" target="_blank" class="px-3.5 py-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 hover:bg-emerald-600 hover:text-white font-bold text-xs transition flex items-center gap-1.5 border dark:border-emerald-800">
+                            <i class="fa-brands fa-whatsapp text-sm"></i>
+                            Konsultasi SKRB
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 4: KIR Pertama (BLU-e) -->
+                <div class="bg-white dark:bg-slate-900 p-7 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-brand-700 dark:hover:border-brand-500 transition duration-300 shadow-sm flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 flex items-center justify-center text-2xl font-bold group-hover:bg-emerald-700 group-hover:text-white transition">
+                            <i class="fa-solid fa-barcode"></i>
+                        </div>
+                        <div>
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">Dishub Kota/Kab</span>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-0.5">Uji Berkala Pertama (KIR / BLU-e)</h3>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-300 text-xs leading-relaxed">
+                            Pengawalan uji laik jalan pertama di Unit Pelaksana Uji Berkala Kendaraan Bermotor (UPUBKB) Dishub sampai terbit kartu pintar <strong>BLU-e Smart Card</strong> dan RFID stiker.
+                        </p>
+                        <ul class="text-xs text-slate-500 dark:text-slate-400 space-y-1.5 border-t border-slate-100 dark:border-slate-800 pt-3">
+                            <li><i class="fa-solid fa-check text-emerald-600 dark:text-emerald-400 mr-1.5"></i> Uji Emisi Gas Buang & Efisiensi Rem</li>
+                            <li><i class="fa-solid fa-check text-emerald-600 dark:text-emerald-400 mr-1.5"></i> Pengecekan Lampu, Dimensi, & Alat Pemantul (APHR)</li>
+                            <li><i class="fa-solid fa-check text-emerald-600 dark:text-emerald-400 mr-1.5"></i> Pengambilan Kartu BLU-e & Sertifikat Hasil Uji</li>
+                        </ul>
+                    </div>
+                    <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                        <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Siap Operasi di Jalan</span>
+                        <a href="https://wa.me/6285721702603?text=Halo%20Karoserihub.id,%20saya%20ingin%20layanan%20pengurusan%20Uji%20KIR%20BLU-e" target="_blank" class="px-3.5 py-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 hover:bg-emerald-600 hover:text-white font-bold text-xs transition flex items-center gap-1.5 border dark:border-emerald-800">
+                            <i class="fa-brands fa-whatsapp text-sm"></i>
+                            Urus Uji KIR
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 5: Kalibrasi & Tera Tangki Metrologi -->
+                <div class="bg-white dark:bg-slate-900 p-7 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-brand-700 dark:hover:border-brand-500 transition duration-300 shadow-sm flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-purple-50 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300 flex items-center justify-center text-2xl font-bold group-hover:bg-purple-700 group-hover:text-white transition">
+                            <i class="fa-solid fa-scale-balanced"></i>
+                        </div>
+                        <div>
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-purple-700 dark:text-purple-400">Metrologi Legal Kemendag</span>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-0.5">Tera Kalibrasi Tangki (BBM / CPO)</h3>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-300 text-xs leading-relaxed">
+                            Pengujian kapasitas volume dan penerbitan <strong>Sertifikat Tera Metrologi Legal</strong> untuk tangki BBM Pertamina, kimia cair, air bersih, serta tangki CPO berstandar akurasi ukur niaga.
+                        </p>
+                        <ul class="text-xs text-slate-500 dark:text-slate-400 space-y-1.5 border-t border-slate-100 dark:border-slate-800 pt-3">
+                            <li><i class="fa-solid fa-check text-emerald-600 dark:text-emerald-400 mr-1.5"></i> Kalibrasi Volume Kompartemen & T2/T3 Cap Segel</li>
+                            <li><i class="fa-solid fa-check text-emerald-600 dark:text-emerald-400 mr-1.5"></i> Penerbitan Buku Tabel Volume Ukur Cairan</li>
+                            <li><i class="fa-solid fa-check text-emerald-600 dark:text-emerald-400 mr-1.5"></i> Pengesahan Cap Tanda Tera Sah RI</li>
+                        </ul>
+                    </div>
+                    <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                        <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Standar Migas & Industri</span>
+                        <a href="https://wa.me/6285721702603?text=Halo%20Karoserihub.id,%20saya%20ingin%20konsultasi%20Tera%20Kalibrasi%20Tangki" target="_blank" class="px-3.5 py-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 hover:bg-emerald-600 hover:text-white font-bold text-xs transition flex items-center gap-1.5 border dark:border-emerald-800">
+                            <i class="fa-brands fa-whatsapp text-sm"></i>
+                            Urus Tera Tangki
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 6: Izin B3, Limbah Medis & Rekomendasi Khusus -->
+                <div class="bg-white dark:bg-slate-900 p-7 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-brand-700 dark:hover:border-brand-500 transition duration-300 shadow-sm flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-rose-50 dark:bg-rose-950/60 text-brand-800 dark:text-rose-300 flex items-center justify-center text-2xl font-bold group-hover:bg-brand-800 group-hover:text-white transition">
+                            <i class="fa-solid fa-biohazard"></i>
+                        </div>
+                        <div>
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400">KLHK & Dinkes / Kemenhub</span>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-0.5">Izin Khusus Angkutan B3 & Medis</h3>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-300 text-xs leading-relaxed">
+                            Pendampingan izin rekomendasi pengangkutan <strong>Bahan Berbahaya & Beracun (B3)</strong> dari KLHK, izin sertifikasi kelayakan ambulans/mobil jenazah Dinkes, serta izin trayek pariwisata.
+                        </p>
+                        <ul class="text-xs text-slate-500 dark:text-slate-400 space-y-1.5 border-t border-slate-100 dark:border-slate-800 pt-3">
+                            <li><i class="fa-solid fa-check text-emerald-600 dark:text-emerald-400 mr-1.5"></i> Rekomendasi Pengangkutan Limbah B3 KLHK</li>
+                            <li><i class="fa-solid fa-check text-emerald-600 dark:text-emerald-400 mr-1.5"></i> Sertifikasi Akreditasi Ambulans Dinkes</li>
+                            <li><i class="fa-solid fa-check text-emerald-600 dark:text-emerald-400 mr-1.5"></i> Kelengkapan Simbol Hazard & SOP Safety</li>
+                        </ul>
+                    </div>
+                    <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                        <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Izin Terintegrasi OSS</span>
+                        <a href="https://wa.me/6285721702603?text=Halo%20Karoserihub.id,%20saya%20ingin%20konsultasi%20Izin%20Angkutan%20B3%20Medis" target="_blank" class="px-3.5 py-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 hover:bg-emerald-600 hover:text-white font-bold text-xs transition flex items-center gap-1.5 border dark:border-emerald-800">
+                            <i class="fa-brands fa-whatsapp text-sm"></i>
+                            Konsultasi Izin Khusus
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alur 4 Langkah Pengurusan Surat Karoseri -->
+            <div class="mt-14 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-8 shadow-sm">
+                <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-6 mb-6">
+                    <div>
+                        <h4 class="text-xl font-extrabold text-slate-900 dark:text-white">Alur Pengurusan Surat Terpadu di Karoserihub.id</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Kami mengawal dari berkas sasis tiba hingga kendaraan beroperasi legal 100%.</p>
+                    </div>
+                    <a href="https://wa.me/6285721702603?text=Halo%20Karoserihub.id,%20saya%20ingin%20audit%20legalitas%20dokumen%20armada%20saya" target="_blank" class="mt-4 md:mt-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition shadow">
+                        <i class="fa-brands fa-whatsapp text-base"></i>
+                        Cek Legalitas Armada Anda Sekarang
+                    </a>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-xs">
+                    <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/80">
+                        <span class="w-7 h-7 rounded-full bg-brand-800 text-white font-bold inline-flex items-center justify-center mb-2">1</span>
+                        <h5 class="font-bold text-slate-900 dark:text-white text-sm">Verifikasi Dokumen Sasis</h5>
+                        <p class="text-slate-500 dark:text-slate-400 mt-1">Pengecekan Faktur APM/Dealer, Sertifikat Uji Tipe Sasis, Gesekan Nomor Rangka & Mesin.</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/80">
+                        <span class="w-7 h-7 rounded-full bg-brand-800 text-white font-bold inline-flex items-center justify-center mb-2">2</span>
+                        <h5 class="font-bold text-slate-900 dark:text-white text-sm">Penyelarasan SKRB Teknik</h5>
+                        <p class="text-slate-500 dark:text-slate-400 mt-1">Penyesuaian gambar rancang bangun sesuai regulasi batas dimensi Kemenhub (Zero ODOL).</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/80">
+                        <span class="w-7 h-7 rounded-full bg-brand-800 text-white font-bold inline-flex items-center justify-center mb-2">3</span>
+                        <h5 class="font-bold text-slate-900 dark:text-white text-sm">Uji Mutu & Cetak SRUT</h5>
+                        <p class="text-slate-500 dark:text-slate-400 mt-1">Inspeksi fisik terpasang, uji kebocoran & rem, penerbitan dokumen e-SRUT Kemenhub RI.</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/80">
+                        <span class="w-7 h-7 rounded-full bg-brand-800 text-white font-bold inline-flex items-center justify-center mb-2">4</span>
+                        <h5 class="font-bold text-slate-900 dark:text-white text-sm">Terbit BPKB, STNK & KIR</h5>
+                        <p class="text-slate-500 dark:text-slate-400 mt-1">Faktur Karoseri diserahkan ke Samsat/Polda, BPKB terbit dengan bentuk sah, siap jalan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tentang" class="py-20 bg-white dark:bg-slate-900 transition-colors duration-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="px-3.5 py-1 rounded-full bg-brand-50 dark:bg-brand-950 text-brand-800 dark:text-brand-300 text-xs font-bold uppercase tracking-wider border border-brand-200 dark:border-brand-800">
+                        Tentang Kami
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
+                        Mitra Strategis Rekayasa Bodi Kendaraan Komersial Indonesia
+                    </h2>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+                        <strong class="text-brand-900 dark:text-brand-400">Karoserihub.id</strong> adalah perusahaan manufaktur karoseri modern yang mengedepankan presisi teknik otomotif, durabilitas material baja berkualitas tinggi, serta kepatuhan 100% terhadap regulasi keselamatan transportasi Kementerian Perhubungan RI.
+                    </p>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        Dengan pengalaman menangani ribuan unit untuk armada logistik FMCG, pertambangan batu bara & nikel, armada transportasi massal, hingga unit ambulans tanggap bencana, kami menjamin efisiensi payload maksimal dan garansi rangka hingga 3 tahun.
+                    </p>
+
+                    <div class="grid sm:grid-cols-3 gap-4 pt-2">
+                        <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-center">
+                            <span class="text-2xl font-black text-brand-800 dark:text-brand-400">10+ Thn</span>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium">Pengalaman Fabrikasi</p>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-center">
+                            <span class="text-2xl font-black text-brand-800 dark:text-brand-400">1.850+</span>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium">Armada Mengaspal</p>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-center">
+                            <span class="text-2xl font-black text-emerald-600 dark:text-emerald-400">100%</span>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium">Lolos Uji SRUT</p>
+                        </div>
+                    </div>
+
+                    <div class="pt-2">
+                        <a href="https://wa.me/6285721702603?text=Halo%20Karoserihub.id,%20saya%20ingin%20konsultasi%20dan%20mengetahui%20profil%20perusahaan" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-brand-800 hover:bg-brand-700 text-white font-bold text-sm shadow transition">
+                            <i class="fa-brands fa-whatsapp text-lg text-emerald-400"></i>
+                            Konsultasi dengan Tim Engineer
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6 relative">
+                    <div class="p-8 rounded-3xl bg-slate-900 dark:bg-slate-900/90 text-white shadow-2xl space-y-6 relative overflow-hidden border dark:border-slate-800">
+                        <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-brand-800/40 rounded-full blur-3xl pointer-events-none"></div>
+
+                        <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-brand-800 flex items-center justify-center font-black text-lg">
+                                    <i class="fa-solid fa-industry"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm text-white">Standar Workshop Fabrikasi</h4>
+                                    <p class="text-[11px] text-slate-400">Plant Produksi Terintegrasi</p>
+                                </div>
+                            </div>
+                            <span class="text-xs bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-full font-semibold">Tersertifikasi</span>
+                        </div>
+
+                        <ul class="space-y-4 text-xs sm:text-sm text-slate-300">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-400 mt-1"></i>
+                                <span><strong>Mesin CNC Fiber Laser & Press Brake Bending</strong> menjamin kepresisian tekukan pelat tanpa retak mikro.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-400 mt-1"></i>
+                                <span><strong>Fasilitas Oven Booth Cat Polyurethane (PU)</strong> memberikan ketahanan korosi terhadap hujan asam dan panas ekstrem.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-400 mt-1"></i>
+                                <span><strong>Uji Kebocoran Tekanan Tinggi (Water Leak Test)</strong> memastikan setiap bodi box & wingbox bebas rembes.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-400 mt-1"></i>
+                                <span><strong>Divisi Biro Legalitas Internal</strong> yang mendampingi percepatan penerbitan berkas SRUT Kemenhub & Samsat.</span>
+                            </li>
+                        </ul>
+
+                        <div class="p-4 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between">
+                            <div class="text-xs">
+                                <span class="text-slate-400 block">Butuh Company Profile PDF & Portofolio Lengkap?</span>
+                                <span class="font-semibold text-white">Hubungi representatif kami sekarang</span>
+                            </div>
+                            <a href="https://wa.me/6285721702603?text=Halo%20Karoserihub.id,%20saya%20minta%20dikirimkan%20Company%20Profile%20PDF" target="_blank" class="px-3.5 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition flex items-center gap-1.5 whitespace-nowrap">
+                                <i class="fa-brands fa-whatsapp text-sm"></i>
+                                Minta Compro
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="artikel" class="py-20 bg-slate-50 dark:bg-slate-950 border-y border-slate-200 dark:border-slate-800 transition-colors duration-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="px-3.5 py-1 rounded-full bg-brand-50 dark:bg-brand-950 text-brand-800 dark:text-brand-300 text-xs font-bold uppercase tracking-wider border border-brand-200 dark:border-brand-800">
+                        Wawasan & Edukasi
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight mt-2">
+                        Artikel & Regulasi Karoseri Terkini
+                    </h2>
+                </div>
+                <p class="text-slate-500 dark:text-slate-400 text-sm max-w-md mt-4 md:mt-0">
+                    Informasi penting seputar kebijakan uji tipe Kemenhub, standar Zero ODOL, tips efisiensi muatan, dan pemilihan material bodi.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Artikel 1 -->
+                <article class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-md hover:border-brand-700 dark:hover:border-brand-500 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="h-48 bg-gradient-to-tr from-brand-950 to-brand-800 p-6 flex flex-col justify-between text-white relative">
+                            <span class="bg-brand-900/90 text-brand-200 text-[11px] font-bold px-3 py-1 rounded-full w-max border border-brand-700">Regulasi Transportasi</span>
+                            <div>
+                                <i class="fa-solid fa-file-signature text-4xl text-amber-400 mb-2"></i>
+                                <div class="text-xs text-brand-200">Panduan Kemenhub RI</div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center text-xs text-slate-400 dark:text-slate-400 gap-3 mb-2">
+                                <span><i class="fa-regular fa-calendar mr-1"></i> Update 2026</span>
+                                <span><i class="fa-regular fa-clock mr-1"></i> 5 Menit Baca</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white hover:text-brand-800 dark:hover:text-brand-400 transition">
+                                Panduan Lengkap Penerbitan e-SRUT untuk Kendaraan Niaga Baru
+                            </h3>
+                            <p class="text-slate-600 dark:text-slate-300 text-xs mt-2.5 leading-relaxed">
+                                Memahami alur Sertifikat Registrasi Uji Tipe elektronik, syarat administrasi sasis, dan sanksi operasional jika armada beroperasi tanpa SRUT sah.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between mt-4">
+                        <span class="text-xs font-semibold text-brand-800 dark:text-brand-400">Edukasi Regulasi</span>
+                        <a href="https://wa.me/6285721702603?text=Halo%20Karoserihub.id,%20saya%20ingin%20tanya%20seputar%20artikel%20e-SRUT" target="_blank" class="text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-brand-800 dark:hover:text-brand-400 flex items-center gap-1 transition">
+                            Konsultasi Topik <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Artikel 2 -->
+                <article class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-md hover:border-brand-700 dark:hover:border-brand-500 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="h-48 bg-gradient-to-tr from-slate-900 to-slate-800 p-6 flex flex-col justify-between text-white relative">
+                            <span class="bg-slate-800 text-slate-200 text-[11px] font-bold px-3 py-1 rounded-full w-max border border-slate-700">Teknik & Material</span>
+                            <div>
+                                <i class="fa-solid fa-truck-ramp-box text-4xl text-brand-400 mb-2"></i>
+                                <div class="text-xs text-slate-300">Komparasi Spek Logistik</div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center text-xs text-slate-400 dark:text-slate-400 gap-3 mb-2">
+                                <span><i class="fa-regular fa-calendar mr-1"></i> Update 2026</span>
+                                <span><i class="fa-regular fa-clock mr-1"></i> 6 Menit Baca</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white hover:text-brand-800 dark:hover:text-brand-400 transition">
+                                Box Alumunium Corrugated vs Box Besi Plat: Mana yang Paling Menguntungkan?
+                            </h3>
+                            <p class="text-slate-600 dark:text-slate-300 text-xs mt-2.5 leading-relaxed">
+                                Bedah efisiensi konsumsi bahan bakar, kapasitas tonase muatan legal (GVW), perbandingan harga awal, dan nilai sisa jual kembali bodi.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between mt-4">
+                        <span class="text-xs font-semibold text-brand-800 dark:text-brand-400">Tips Armada</span>
+                        <a href="https://wa.me/6285721702603?text=Halo%20Karoserihub.id,%20saya%20ingin%20tanya%20seputar%20box%20alumunium%20vs%20besi" target="_blank" class="text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-brand-800 dark:hover:text-brand-400 flex items-center gap-1 transition">
+                            Konsultasi Topik <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Artikel 3 -->
+                <article class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-md hover:border-brand-700 dark:hover:border-brand-500 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="h-48 bg-gradient-to-tr from-amber-950 to-amber-900 p-6 flex flex-col justify-between text-white relative">
+                            <span class="bg-amber-900/90 text-amber-200 text-[11px] font-bold px-3 py-1 rounded-full w-max border border-amber-700">Standar Keselamatan</span>
+                            <div>
+                                <i class="fa-solid fa-scale-balanced text-4xl text-emerald-400 mb-2"></i>
+                                <div class="text-xs text-amber-200">Zero ODOL Compliance</div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center text-xs text-slate-400 dark:text-slate-400 gap-3 mb-2">
+                                <span><i class="fa-regular fa-calendar mr-1"></i> Update 2026</span>
+                                <span><i class="fa-regular fa-clock mr-1"></i> 4 Menit Baca</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white hover:text-brand-800 dark:hover:text-brand-400 transition">
+                                Cara Mencegah Sanksi ODOL pada Pengadaan Dump Truck & Wingbox
+                            </h3>
+                            <p class="text-slate-600 dark:text-slate-300 text-xs mt-2.5 leading-relaxed">
+                                Strategi penentuan ukuran panjang, lebar, tinggi, serta rear overhang (ROH) kendaraan sesuai Sertifikat Rancang Bangun (SKRB) resmi.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between mt-4">
+                        <span class="text-xs font-semibold text-brand-800 dark:text-brand-400">Kepatuhan Hukum</span>
+                        <a href="https://wa.me/6285721702603?text=Halo%20Karoserihub.id,%20saya%20ingin%20konsultasi%20standar%20dimensi%20Zero%20ODOL" target="_blank" class="text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-brand-800 dark:hover:text-brand-400 flex items-center gap-1 transition">
+                            Konsultasi Topik <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="kalkulator" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-brand-950/70 via-slate-900 to-slate-950 pointer-events-none"></div>
+
+        <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="px-3 py-1 rounded-full bg-brand-800 text-brand-100 text-xs font-bold uppercase tracking-wider">
+                    Fitur Kalkulator Online
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3">
+                    Simulasi Estimasi Biaya Karoseri
+                </h2>
+                <p class="text-slate-300 text-sm mt-2">
+                    Dapatkan estimasi anggaran awal, estimasi bobot, dan jadwal pengerjaan sesuai kebutuhan armada Anda secara instan.
+                </p>
+            </div>
+
+            <div class="bg-white dark:bg-slate-900 rounded-3xl text-slate-800 dark:text-slate-100 p-6 sm:p-10 shadow-2xl border border-slate-100 dark:border-slate-800 grid lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Form Inputs -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">1. Pilih Tipe Bodi Karoseri</label>
+                        <select id="calcBodyType" onchange="calculateEstimate()" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl px-4 py-3 text-xs sm:text-sm font-semibold focus:ring-2 focus:ring-brand-800 focus:outline-none">
+                            <option value="box_besi" data-base="65000000" data-days="14">Box Besi Standar (Kargo & Logistik Kering)</option>
+                            <option value="box_alumunium" data-base="72000000" data-days="14">Box Alumunium Ringan (Anti Karat & Ringan)</option>
+                            <option value="wingbox" data-base="145000000" data-days="21">Wingbox Hidrolik Otomatis (FMCG & Distribusi Cepat)</option>
+                            <option value="reefer" data-base="125000000" data-days="20">Box Pendingin / Reefer Box (Cold Chain -20°C)</option>
+                            <option value="dump" data-base="185000000" data-days="25">Dump Truck Heavy Duty Hardox (Mining & Galian)</option>
+                            <option value="tangki" data-base="175000000" data-days="24">Tangki Cairan Besi / Stainless Steel SUS 304</option>
+                            <option value="microbus" data-base="160000000" data-days="30">Microbus Pariwisata Executive (16-20 Kursi)</option>
+                            <option value="ambulans" data-base="65000000" data-days="12">Modifikasi Ambulans Emergency / Jenazah</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">2. Pilih Ukuran & Tipe Sasis Kendaraan</label>
+                        <select id="calcChassis" onchange="calculateEstimate()" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl px-4 py-3 text-xs sm:text-sm font-semibold focus:ring-2 focus:ring-brand-800 focus:outline-none">
+                            <option value="light" data-name="Engkel 4 Roda (Canter / Dutro / Elf)">Engkel 4 Roda (Canter / Dutro / Elf) - Ringan</option>
+                            <option value="medium" data-name="Medium 6 Roda (Fighter / Hino 500 / Giga)" selected>Medium 6 Roda (Fighter / Hino 500 / Giga) - Paling Populer</option>
+                            <option value="heavy" data-name="Tronton 10 Roda (Heavy Duty 6x4)">Tronton 10 Roda (Heavy Duty 6x4) - Kapasitas Besar</option>
+                            <option value="van" data-name="Van / Minibus (HiAce / GranMax / Blind Van)">Van / Minibus (HiAce / GranMax / Blind Van)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">3. Opsi Tambahan / Upgrade Spesifikasi & Legalitas</label>
+                        <div class="grid sm:grid-cols-2 gap-3 text-xs">
+                            <label class="flex items-center p-3 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-brand-700 dark:hover:border-brand-500 cursor-pointer transition bg-slate-50/50 dark:bg-slate-800/40">
+                                <input type="checkbox" id="optFloor" onchange="calculateEstimate()" value="8500000" class="rounded text-brand-800 focus:ring-brand-800 w-4 h-4">
+                                <span class="ml-2 font-medium">Lantai Bordes Tebal 4.5mm (+Rp 8,5 Jt)</span>
+                            </label>
+                            <label class="flex items-center p-3 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-brand-700 dark:hover:border-brand-500 cursor-pointer transition bg-slate-50/50 dark:bg-slate-800/40">
+                                <input type="checkbox" id="optHydraulicTail" onchange="calculateEstimate()" value="32000000" class="rounded text-brand-800 focus:ring-brand-800 w-4 h-4">
+                                <span class="ml-2 font-medium">Tailgate Lift Hidrolik 1.5 Ton (+Rp 32 Jt)</span>
+                            </label>
+                            <label class="flex items-center p-3 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-brand-700 dark:hover:border-brand-500 cursor-pointer transition bg-slate-50/50 dark:bg-slate-800/40">
+                                <input type="checkbox" id="optCoating" onchange="calculateEstimate()" value="6000000" class="rounded text-brand-800 focus:ring-brand-800 w-4 h-4">
+                                <span class="ml-2 font-medium">Cat Oven PU + Anti Karat Epoxy (+Rp 6 Jt)</span>
+                            </label>
+                            <label class="flex items-center p-3 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-brand-700 dark:hover:border-brand-500 cursor-pointer transition bg-slate-50/50 dark:bg-slate-800/40">
+                                <input type="checkbox" id="optSrut" onchange="calculateEstimate()" value="5500000" class="rounded text-brand-800 focus:ring-brand-800 w-4 h-4" checked>
+                                <span class="ml-2 font-medium">Pengurusan SRUT Resmi Kemenhub (+Rp 5,5 Jt)</span>
+                            </label>
+                            <label class="flex items-center p-3 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-brand-700 dark:hover:border-brand-500 cursor-pointer transition bg-slate-50/50 dark:bg-slate-800/40">
+                                <input type="checkbox" id="optBpkb" onchange="calculateEstimate()" value="4500000" class="rounded text-brand-800 focus:ring-brand-800 w-4 h-4">
+                                <span class="ml-2 font-medium">Rubah Bentuk BPKB & STNK Samsat (+Rp 4,5 Jt)</span>
+                            </label>
+                            <label class="flex items-center p-3 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-brand-700 dark:hover:border-brand-500 cursor-pointer transition bg-slate-50/50 dark:bg-slate-800/40">
+                                <input type="checkbox" id="optKir" onchange="calculateEstimate()" value="2000000" class="rounded text-brand-800 focus:ring-brand-800 w-4 h-4">
+                                <span class="ml-2 font-medium">Uji Pertama KIR Dishub / BLU-e (+Rp 2 Jt)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">4. Jumlah Unit Armada</label>
+                        <div class="flex items-center space-x-4">
+                            <input type="range" id="unitCount" min="1" max="25" value="1" oninput="document.getElementById('unitVal').innerText = this.value; calculateEstimate();" class="w-full accent-brand-800 cursor-pointer">
+                            <span class="font-extrabold text-brand-800 dark:text-brand-300 bg-brand-50 dark:bg-brand-950 px-3 py-1.5 rounded-lg border border-brand-200 dark:border-brand-800 text-sm whitespace-nowrap">
+                                <span id="unitVal">1</span> Unit
+                            </span>
+                        </div>
+                        <span class="text-[11px] text-slate-400 dark:text-slate-400 mt-1 block">*Diskon kuantiti otomatis berlaku untuk pemesanan fleet di atas 3 unit.</span>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 bg-gradient-to-br from-brand-900 to-brand-950 text-white rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-xl">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between border-b border-brand-700/60 pb-3">
+                            <span class="text-xs uppercase tracking-widest text-brand-200 font-bold">Ringkasan Estimasi</span>
+                            <span class="text-xs bg-emerald-500 text-white font-bold px-2 py-0.5 rounded">Akurasi ~95%</span>
+                        </div>
+
+                        <div class="space-y-2 text-xs">
+                            <div class="flex justify-between">
+                                <span class="text-slate-300">Tipe Karoseri:</span>
+                                <span id="summaryBody" class="font-bold text-white text-right">Box Besi Standar</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-300">Ukuran Sasis:</span>
+                                <span id="summaryChassis" class="font-bold text-white text-right">Medium 6 Roda</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-300">Estimasi Produksi:</span>
+                                <span id="summaryDays" class="font-bold text-amber-300">14 Hari Kerja</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-300">Diskon Volume Fleet:</span>
+                                <span id="summaryDiscount" class="font-bold text-emerald-400">Rp 0</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-brand-700/60">
+                            <span class="text-xs text-brand-200 block mb-1">Total Estimasi Anggaran:</span>
+                            <div class="text-3xl sm:text-4xl font-black text-white tracking-tight" id="totalPriceDisplay">
+                                Rp 70.500.000
+                            </div>
+                            <span class="text-[10px] text-brand-300 block mt-1">Belum termasuk PPN 11% & Ongkir Sasis</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 space-y-3">
+                        <button onclick="sendEstimationToWhatsApp()" class="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 font-extrabold text-sm text-white shadow-lg transition flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            Kirim Spek Ini ke Sales Engineer
+                        </button>
+                        <button onclick="copySpecSummary()" class="w-full py-2.5 rounded-xl bg-white/10 hover:bg-white/20 font-semibold text-xs text-slate-200 transition flex items-center justify-center gap-2">
+                            <i class="fa-regular fa-copy"></i>
+                            Salin Rincian Spesifikasi
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="keunggulan" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-3 mb-16">
+                <span class="px-3.5 py-1 rounded-full bg-brand-50 text-brand-800 text-xs font-bold uppercase tracking-wider border border-brand-200">
+                    Standar Mutu Karoseri
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                    Mengapa Perusahaan Logistik & Mining Memilih Kami?
+                </h2>
+                <p class="text-slate-600 text-sm sm:text-base">
+                    Investasi armada adalah aset produktif jangka panjang. Kami memastikan setiap sambungan las dan pelapisan anti-korosi dikerjakan dengan standar teknik tertinggi.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-7 rounded-2xl border border-slate-200 hover:border-brand-700 transition duration-300 space-y-4 custom-shadow">
+                    <div class="w-14 h-14 rounded-xl bg-brand-100 text-brand-800 flex items-center justify-center text-2xl font-bold">
+                        <i class="fa-solid fa-file-shield"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900">Legalitas SRUT 100% Sah</h3>
+                    <p class="text-slate-600 text-xs leading-relaxed">
+                        Surat Rancang Bangun (SKRB) & Sertifikat Uji Tipe resmi Kemenhub selesai tepat waktu agar armada legal beroperasi di jalan tanpa tilang ODOL.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-white p-7 rounded-2xl border border-slate-200 hover:border-brand-700 transition duration-300 space-y-4 custom-shadow">
+                    <div class="w-14 h-14 rounded-xl bg-brand-100 text-brand-800 flex items-center justify-center text-2xl font-bold">
+                        <i class="fa-solid fa-shield-virus"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900">Proteksi Anti Karat Oven</h3>
+                    <p class="text-slate-600 text-xs leading-relaxed">
+                        Proses degreasing, sandblasting SA 2.5, primer zinc chromate, serta oven baking polyurethane tahan cuaca ekstrem tropis hingga bertahun-tahun.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-white p-7 rounded-2xl border border-slate-200 hover:border-brand-700 transition duration-300 space-y-4 custom-shadow">
+                    <div class="w-14 h-14 rounded-xl bg-brand-100 text-brand-800 flex items-center justify-center text-2xl font-bold">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900">Presisi CNC Laser Cut</h3>
+                    <p class="text-slate-600 text-xs leading-relaxed">
+                        Pemotongan plat baja menggunakan mesin CNC Fiber Laser berdaya tinggi menghasilkan toleransi di bawah 0.2mm tanpa distorsi struktural.
+                    </p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="bg-white p-7 rounded-2xl border border-slate-200 hover:border-brand-700 transition duration-300 space-y-4 custom-shadow">
+                    <div class="w-14 h-14 rounded-xl bg-brand-100 text-brand-800 flex items-center justify-center text-2xl font-bold">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900">Garansi Rangka 3 Tahun</h3>
+                    <p class="text-slate-600 text-xs leading-relaxed">
+                        Layanan purnajual komprehensif, mobile service emergency untuk perbaikan hidrolik di depo klien, dan ketersediaan suku cadang bodi.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portofolio" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="px-3.5 py-1 rounded-full bg-brand-50 text-brand-800 text-xs font-bold uppercase tracking-wider border border-brand-200">
+                        Hasil Pengerjaan Terkini
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-2">
+                        Galeri Unit Karoseri Selesai Uji
+                    </h2>
+                </div>
+                <p class="text-slate-500 text-sm max-w-md mt-4 md:mt-0">
+                    Setiap unit melalui proses QC ketat mulai dari uji semprot air bertekanan (water leak test) hingga uji kekuatan beban sumbu.
+                </p>
+            </div>
+
+            <!-- Portfolio Cards -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Project 1 -->
+                <div class="group relative rounded-2xl overflow-hidden border border-slate-200 bg-slate-900">
+                    <div class="h-64 bg-slate-800 flex items-center justify-center p-6 text-brand-100 group-hover:scale-105 transition duration-500">
+                        <div class="text-center">
+                            <i class="fa-solid fa-truck-moving text-7xl text-brand-600 mb-2"></i>
+                            <div class="text-xs font-semibold text-slate-300">Fleet Order PT Logistik Nusantara</div>
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent p-6 flex flex-col justify-end text-white">
+                        <span class="text-brand-300 text-xs font-bold uppercase tracking-wider">Hino 500 Series</span>
+                        <h4 class="text-lg font-bold">12 Unit Wingbox Alumunium 9.8M</h4>
+                        <p class="text-xs text-slate-300 mt-1">Diserahkan ke klien logistik express nasional dengan legalitas KIR & SRUT tuntas.</p>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="group relative rounded-2xl overflow-hidden border border-slate-200 bg-slate-900">
+                    <div class="h-64 bg-slate-800 flex items-center justify-center p-6 text-brand-100 group-hover:scale-105 transition duration-500">
+                        <div class="text-center">
+                            <i class="fa-solid fa-truck-field text-7xl text-amber-600 mb-2"></i>
+                            <div class="text-xs font-semibold text-slate-300">Mining Site Morowali</div>
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent p-6 flex flex-col justify-end text-white">
+                        <span class="text-amber-400 text-xs font-bold uppercase tracking-wider">Isuzu Giga FVZ 285</span>
+                        <h4 class="text-lg font-bold">Dump Truck Hardox 450 (28 m³)</h4>
+                        <p class="text-xs text-slate-300 mt-1">Konstruksi khusus tahan benturan batu split dan nikel ore muatan berat.</p>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="group relative rounded-2xl overflow-hidden border border-slate-200 bg-slate-900">
+                    <div class="h-64 bg-slate-800 flex items-center justify-center p-6 text-brand-100 group-hover:scale-105 transition duration-500">
+                        <div class="text-center">
+                            <i class="fa-solid fa-truck-medical text-7xl text-red-600 mb-2"></i>
+                            <div class="text-xs font-semibold text-slate-300">RSUD & Satgas Bencana</div>
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent p-6 flex flex-col justify-end text-white">
+                        <span class="text-red-400 text-xs font-bold uppercase tracking-wider">Toyota HiAce Premio</span>
+                        <h4 class="text-lg font-bold">Ambulans Emergency ICU Bergerak</h4>
+                        <p class="text-xs text-slate-300 mt-1">Dilengkapi ventilator transport, monitor defibrilator, dan sistem gas medis terpusat.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="alur" class="py-20 bg-slate-100 border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="px-3.5 py-1 rounded-full bg-brand-50 text-brand-800 text-xs font-bold uppercase tracking-wider border border-brand-200">
+                    Transparansi Alur Kerja
+                </span>
+                <h2 class="text-3xl font-extrabold text-slate-900 mt-2">
+                    5 Langkah Pembuatan Karoseri di Karoserihub.id
+                </h2>
+                <p class="text-slate-600 text-sm mt-1">
+                    Kami memastikan klien menerima pembaruan berkala (weekly progress photos) selama proses perakitan.
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                <!-- Step 1 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 text-center relative">
+                    <div class="w-10 h-10 rounded-full bg-brand-800 text-white font-bold flex items-center justify-center mx-auto mb-4 text-sm shadow">1</div>
+                    <h4 class="font-bold text-slate-900 text-sm">Konsultasi & Blueprint 3D</h4>
+                    <p class="text-slate-500 text-xs mt-2">Analisis muatan, pemilihan material, dan kalkulasi distribusi bobot sumbu (GVM).</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 text-center relative">
+                    <div class="w-10 h-10 rounded-full bg-brand-800 text-white font-bold flex items-center justify-center mx-auto mb-4 text-sm shadow">2</div>
+                    <h4 class="font-bold text-slate-900 text-sm">Fabrikasi & Las Rangka</h4>
+                    <p class="text-slate-500 text-xs mt-2">Pemotongan CNC Laser, bending presisi, dan perakitan sub-frame baja berstandar AWS.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 text-center relative">
+                    <div class="w-10 h-10 rounded-full bg-brand-800 text-white font-bold flex items-center justify-center mx-auto mb-4 text-sm shadow">3</div>
+                    <h4 class="font-bold text-slate-900 text-sm">Finishing & Cat Oven PU</h4>
+                    <p class="text-slate-500 text-xs mt-2">Aplikasi primer anti karat dan pengecatan di oven booth bertemperatur 70°C.</p>
+                </div>
+                <!-- Step 4 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 text-center relative">
+                    <div class="w-10 h-10 rounded-full bg-brand-800 text-white font-bold flex items-center justify-center mx-auto mb-4 text-sm shadow">4</div>
+                    <h4 class="font-bold text-slate-900 text-sm">Uji Mutu & Terbit SRUT</h4>
+                    <p class="text-slate-500 text-xs mt-2">Simulasi kebocoran kabin, uji rem, lampu, dan pengurusan sertifikasi Kemenhub RI.</p>
+                </div>
+                <!-- Step 5 -->
+                <div class="bg-white p-6 rounded-2xl border border-brand-800 bg-brand-50/30 text-center relative">
+                    <div class="w-10 h-10 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center mx-auto mb-4 text-sm shadow">5</div>
+                    <h4 class="font-bold text-slate-900 text-sm">Serah Terima & Bergaransi</h4>
+                    <p class="text-slate-500 text-xs mt-2">Pengiriman unit ke lokasi klien disertai sertifikat garansi resmi hingga 3 tahun.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontak" class="py-20 bg-white dark:bg-slate-900 transition-colors duration-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="px-3.5 py-1 rounded-full bg-brand-50 dark:bg-brand-950 text-brand-800 dark:text-brand-300 text-xs font-bold uppercase tracking-wider border border-brand-200 dark:border-brand-800">
+                        Pusat Workshop & Pabrik
+                    </span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                        Kunjungi Fasilitas Fabrikasi Kami
+                    </h2>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm">
+                        Anda dapat melihat langsung proses perakitan, kualitas bahan baku baja yang digunakan, serta berdiskusi dengan tim insinyur kami.
+                    </p>
+
+                    <div class="space-y-4 pt-2 text-sm text-slate-700 dark:text-slate-300">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-9 h-9 rounded-lg bg-brand-100 dark:bg-brand-950 text-brand-800 dark:text-brand-300 flex items-center justify-center shrink-0 mt-0.5 border dark:border-brand-800">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <strong class="text-slate-900 dark:text-white block font-bold">Plant Utama:</strong>
+                                <span>Kawasan Industri Delta Silicon, Cikarang Pusat, Kab. Bekasi, Jawa Barat 17530</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-3">
+                            <div class="w-9 h-9 rounded-lg bg-brand-100 dark:bg-brand-950 text-brand-800 dark:text-brand-300 flex items-center justify-center shrink-0 mt-0.5 border dark:border-brand-800">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <strong class="text-slate-900 dark:text-white block font-bold">Email Bisnis & Tender:</strong>
+                                <a href="mailto:Karoseriid@gmail.com" class="text-brand-800 dark:text-brand-400 hover:underline font-semibold">Karoseriid@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-3">
+                            <div class="w-9 h-9 rounded-lg bg-brand-100 dark:bg-brand-950 text-brand-800 dark:text-brand-300 flex items-center justify-center shrink-0 mt-0.5 border dark:border-brand-800">
+                                <i class="fa-brands fa-whatsapp text-emerald-600 dark:text-emerald-400"></i>
+                            </div>
+                            <div>
+                                <strong class="text-slate-900 dark:text-white block font-bold">WhatsApp Hotline:</strong>
+                                <a href="https://wa.me/6285721702603" target="_blank" class="text-brand-800 dark:text-brand-400 hover:underline font-semibold">+62 857-2170-2603</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-3">
+                            <div class="w-9 h-9 rounded-lg bg-brand-100 dark:bg-brand-950 text-brand-800 dark:text-brand-300 flex items-center justify-center shrink-0 mt-0.5 border dark:border-brand-800">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div>
+                                <strong class="text-slate-900 dark:text-white block font-bold">Jam Kerja Workshop:</strong>
+                                <span>Senin - Sabtu: 08:00 - 17:00 WIB (Layanan Darurat 24 Jam)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Consultation Form -->
+                <div class="lg:col-span-7 bg-slate-50 dark:bg-slate-900/90 p-8 sm:p-10 rounded-3xl border border-slate-200 dark:border-slate-800 custom-shadow">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Jadwalkan Konsultasi Teknis Gratis</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mb-6">Isi formulir berikut, data Anda akan langsung terhubung dengan tim Senior Karoseri Engineer via WhatsApp.</p>
+
+                    <form id="consultForm" onsubmit="handleFormSubmit(event)" class="space-y-4 text-xs sm:text-sm">
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Nama Lengkap / PIC</label>
+                                <input type="text" id="picName" required placeholder="Contoh: Hendra Wijaya" class="w-full bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-brand-800 focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Nama Perusahaan / Usaha</label>
+                                <input type="text" id="picCompany" placeholder="PT Logistik Sejahtera" class="w-full bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-brand-800 focus:outline-none">
+                            </div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Nomor WhatsApp Aktif</label>
+                                <input type="tel" id="picPhone" required placeholder="081234567890" class="w-full bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-brand-800 focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Perkiraan Kebutuhan Unit</label>
+                                <select id="picUnit" class="w-full bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-brand-800 focus:outline-none">
+                                    <option>1 Unit (Kebutuhan Awal)</option>
+                                    <option>2 - 5 Unit (Fleet Sedang)</option>
+                                    <option>> 5 Unit (Tender Korporat)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Deskripsi Muatan atau Rencana Spesifikasi</label>
+                            <textarea id="picNotes" rows="3" placeholder="Jelaskan jenis barang bawaan, rute jalan (aspal/tambang), dan dimensi yang diinginkan..." class="w-full bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-brand-800 focus:outline-none"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-3.5 rounded-xl bg-brand-800 hover:bg-brand-700 text-white font-bold transition shadow-md flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-lg text-emerald-400"></i>
+                            Kirim & Hubungkan ke WhatsApp Sales
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-brand-950 text-white pt-16 pb-12 border-t border-brand-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-brand-900/80">
+                <!-- Col 1 -->
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-xl bg-brand-800 text-white flex items-center justify-center font-black text-xl shadow">
+                            <i class="fa-solid fa-truck-ramp-box"></i>
+                        </div>
+                        <span class="text-2xl font-black tracking-tight text-white">
+                            Karoseri<span class="text-brand-300">hub</span><span class="text-xs ml-0.5 px-1.5 py-0.5 rounded bg-brand-900 text-brand-200">.id</span>
+                        </span>
+                    </div>
+                    <p class="text-slate-300 text-xs leading-relaxed max-w-sm">
+                        Platform manufaktur rekayasa bodi kendaraan komersial tepercaya. Menghubungkan ketangguhan material, kecepatan fabrikasi, dan kepatuhan regulasi keselamatan transportasi di Indonesia.
+                    </p>
+                    <div class="space-y-2 text-xs text-slate-300">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-envelope text-brand-400"></i>
+                            <a href="mailto:Karoseriid@gmail.com" class="hover:text-white transition">Karoseriid@gmail.com</a>
+                        </div>
+                    </div>
+                    <!-- Social Media Icons: Instagram, TikTok, YouTube, WhatsApp -->
+                    <div class="flex space-x-3 text-slate-300 text-base pt-2">
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" title="Instagram" class="w-10 h-10 rounded-xl bg-brand-900 flex items-center justify-center hover:bg-pink-600 hover:text-white transition duration-300 shadow">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" title="TikTok" class="w-10 h-10 rounded-xl bg-brand-900 flex items-center justify-center hover:bg-slate-900 hover:text-white transition duration-300 shadow">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" title="YouTube" class="w-10 h-10 rounded-xl bg-brand-900 flex items-center justify-center hover:bg-red-600 hover:text-white transition duration-300 shadow">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                        <a href="https://wa.me/6285721702603?text=Halo%20Karoserihub.id,%20saya%20ingin%20konsultasi%20layanan%20karoseri" target="_blank" rel="noopener noreferrer" title="Chat WhatsApp Kami" class="w-10 h-10 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center transition duration-300 shadow">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Col 2 -->
+                <div class="space-y-3">
+                    <h5 class="text-sm font-bold text-white uppercase tracking-wider">Navigasi Cepat</h5>
+                    <ul class="space-y-2 text-xs text-slate-300 font-medium">
+                        <li><a href="#produk" class="hover:text-white transition">Katalog Produk</a></li>
+                        <li><a href="#layanan" class="hover:text-white transition">Layanan & Izin Resmi</a></li>
+                        <li><a href="#tentang" class="hover:text-white transition">Tentang Kami</a></li>
+                        <li><a href="#artikel" class="hover:text-white transition">Artikel & Edukasi</a></li>
+                        <li><a href="#kalkulator" class="hover:text-white transition">Simulasi Estimasi</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3 -->
+                <div class="space-y-3">
+                    <h5 class="text-sm font-bold text-white uppercase tracking-wider">Layanan Perizinan</h5>
+                    <ul class="space-y-2 text-xs text-slate-300 font-medium">
+                        <li><a href="#layanan" class="hover:text-white transition">Urus Izin SRUT Kemenhub RI</a></li>
+                        <li><a href="#layanan" class="hover:text-white transition">Rubah Bentuk BPKB & STNK</a></li>
+                        <li><a href="#layanan" class="hover:text-white transition">Pengesahan SKRB Rancang Bangun</a></li>
+                        <li><a href="#layanan" class="hover:text-white transition">Uji Pertama KIR / BLU-e</a></li>
+                        <li><a href="#layanan" class="hover:text-white transition">Tera Kalibrasi Tangki BBM / CPO</a></li>
+                        <li><a href="#layanan" class="hover:text-white transition">Rekomendasi Izin Angkutan B3 & Medis</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Google Maps & Workshop Location -->
+                <div class="space-y-3">
+                    <h5 class="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
+                        <i class="fa-solid fa-map-location-dot text-brand-400"></i>
+                        Lokasi Workshop
+                    </h5>
+                    <p class="text-xs text-slate-300">
+                        Titik Presisi: <span class="font-mono text-brand-200 text-[11px]">-6.249478, 106.999133</span>
+                    </p>
+                    
+                    <!-- Embedded Google Map -->
+                    <div class="rounded-xl overflow-hidden border border-brand-800 shadow-md bg-slate-900 h-28 relative">
+                        <iframe 
+                            src="https://maps.google.com/maps?q=-6.249478879048092,106.99913328310257&z=15&output=embed" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Peta Workshop Karoserihub.id">
+                        </iframe>
+                    </div>
+                    <a href="https://maps.app.goo.gl/AG8ENaGt95ozkukJ7" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs text-brand-300 hover:text-white transition font-semibold">
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i> Buka di Google Maps
+                    </a>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+                <p>&copy; 2026 Karoserihub.id. Hak Cipta Dilindungi Undang-Undang.</p>
+                <div class="flex items-center space-x-6 text-[11px]">
+                    <a href="#tentang" class="hover:text-slate-200 transition">Tentang Kami</a>
+                    <a href="#layanan" class="hover:text-slate-200 transition">Sertifikasi SRUT</a>
+                    <a href="#kalkulator" class="hover:text-slate-200 transition">Simulasi Harga</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="specModal" class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative animate-fadeIn space-y-5 border border-slate-200 dark:border-slate-800">
+            <button onclick="closeSpecModal()" aria-label="Tutup" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-brand-100 dark:bg-brand-950 text-brand-800 dark:text-brand-300 flex items-center justify-center font-bold text-lg border dark:border-brand-800">
+                    <i class="fa-solid fa-truck-ramp-box"></i>
+                </div>
+                <div>
+                    <h3 id="modalTitle" class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">Judul Spek</h3>
+                    <span class="text-xs text-brand-800 dark:text-brand-400 font-semibold">Spesifikasi Detail Karoseri</span>
+                </div>
+            </div>
+
+            <p id="modalDesc" class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed"></p>
+
+            <div class="grid grid-cols-2 gap-3 text-xs bg-slate-50 dark:bg-slate-800/60 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+                <div>
+                    <span class="text-slate-400 block font-medium">Estimasi Investasi:</span>
+                    <span id="modalPrice" class="font-extrabold text-slate-900 dark:text-white text-sm"></span>
+                </div>
+                <div>
+                    <span class="text-slate-400 block font-medium">Dimensi / Kapasitas Standar:</span>
+                    <span id="modalDim" class="font-bold text-slate-900 dark:text-white"></span>
+                </div>
+                <div class="col-span-2 pt-2 border-t border-slate-200 dark:border-slate-700">
+                    <span class="text-slate-400 block font-medium">Rekomendasi Sasis:</span>
+                    <span id="modalChassis" class="font-semibold text-brand-900 dark:text-brand-300"></span>
+                </div>
+            </div>
+
+            <div class="flex gap-3 pt-2">
+                <button onclick="orderViaModal()" class="flex-1 py-3 rounded-xl bg-brand-800 hover:bg-brand-700 text-white font-bold text-xs sm:text-sm transition flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-base"></i>
+                    Konsultasi Tipe Ini di WhatsApp
+                </button>
+                <button onclick="closeSpecModal()" class="px-5 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold text-xs sm:text-sm transition">
+                    Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toastBox" class="fixed bottom-6 right-6 z-50 hidden bg-slate-900 dark:bg-slate-800 text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-slate-700 flex items-center gap-3 text-sm">
+        <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+        <span id="toastMessage">Pesan informasi berhasil dimuat!</span>
+    </div>
+
+    <script>
+        // Mobile Navigation Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                const isHidden = mobileMenu.classList.contains('hidden');
+                if (isHidden) {
+                    mobileMenu.classList.remove('hidden');
+                    menuIcon?.classList.replace('fa-bars', 'fa-xmark');
+                } else {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon?.classList.replace('fa-xmark', 'fa-bars');
+                }
+            });
+        }
+
+        // Close mobile menu on anchor click
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu?.classList.add('hidden');
+                menuIcon?.classList.replace('fa-xmark', 'fa-bars');
+            });
+        });
+
+        // Filter Catalog by Category
+        function filterCategory(category) {
+            const buttons = document.querySelectorAll('.cat-btn');
+            buttons.forEach(btn => {
+                if (btn.getAttribute('data-category') === category) {
+                    btn.classList.add('bg-brand-800', 'text-white', 'shadow-sm');
+                    btn.classList.remove('bg-slate-100', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+                } else {
+                    btn.classList.remove('bg-brand-800', 'text-white', 'shadow-sm');
+                    btn.classList.add('bg-slate-100', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+                }
+            });
+
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                const itemCat = card.getAttribute('data-cat');
+                if (category === 'all' || itemCat === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Live Estimator Calculation
+        function calculateEstimate() {
+            const bodySelect = document.getElementById('calcBodyType');
+            const chassisSelect = document.getElementById('calcChassis');
+            const unitInput = document.getElementById('unitCount');
+
+            if (!bodySelect || !chassisSelect || !unitInput) return;
+
+            const selectedBodyOption = bodySelect.options[bodySelect.selectedIndex];
+            const selectedChassisOption = chassisSelect.options[chassisSelect.selectedIndex];
+
+            if (!selectedBodyOption || !selectedChassisOption) return;
+
+            const baseBodyPrice = parseInt(selectedBodyOption.getAttribute('data-base') || '0');
+            const baseLeadDays = parseInt(selectedBodyOption.getAttribute('data-days') || '15');
+            const units = parseInt(unitInput.value || '1');
+
+            // Additional features cost
+            let addonsTotal = 0;
+            const optFloor = document.getElementById('optFloor');
+            const optHydraulicTail = document.getElementById('optHydraulicTail');
+            const optCoating = document.getElementById('optCoating');
+            const optSrut = document.getElementById('optSrut');
+            const optBpkb = document.getElementById('optBpkb');
+            const optKir = document.getElementById('optKir');
+
+            if (optFloor && optFloor.checked) addonsTotal += parseInt(optFloor.value || '0');
+            if (optHydraulicTail && optHydraulicTail.checked) addonsTotal += parseInt(optHydraulicTail.value || '0');
+            if (optCoating && optCoating.checked) addonsTotal += parseInt(optCoating.value || '0');
+            if (optSrut && optSrut.checked) addonsTotal += parseInt(optSrut.value || '0');
+            if (optBpkb && optBpkb.checked) addonsTotal += parseInt(optBpkb.value || '0');
+            if (optKir && optKir.checked) addonsTotal += parseInt(optKir.value || '0');
+
+            // Multiplier depending on chassis size
+            let chassisMultiplier = 1.0;
+            if (chassisSelect.value === 'light') chassisMultiplier = 0.75;
+            if (chassisSelect.value === 'medium') chassisMultiplier = 1.0;
+            if (chassisSelect.value === 'heavy') chassisMultiplier = 1.45;
+            if (chassisSelect.value === 'van') chassisMultiplier = 0.9;
+
+            const unitCost = Math.round((baseBodyPrice * chassisMultiplier) + addonsTotal);
+            let total = unitCost * units;
+
+            // Volume Fleet Discount (e.g. 5% if units >= 3, 8% if units >= 6)
+            let discount = 0;
+            if (units >= 6) {
+                discount = total * 0.08;
+            } else if (units >= 3) {
+                discount = total * 0.05;
+            }
+
+            const finalTotal = total - discount;
+
+            // Update UI safely
+            const summaryBody = document.getElementById('summaryBody');
+            const summaryChassis = document.getElementById('summaryChassis');
+            const summaryDays = document.getElementById('summaryDays');
+            const summaryDiscount = document.getElementById('summaryDiscount');
+            const totalPriceDisplay = document.getElementById('totalPriceDisplay');
+
+            if (summaryBody) summaryBody.innerText = selectedBodyOption.text.split('(')[0];
+            if (summaryChassis) summaryChassis.innerText = (selectedChassisOption.getAttribute('data-name') || selectedChassisOption.text).split('(')[0];
+            if (summaryDays) summaryDays.innerText = `${baseLeadDays + (units > 2 ? Math.floor(units * 1.5) : 0)} Hari Kerja`;
+            if (summaryDiscount) summaryDiscount.innerText = discount > 0 ? `- Rp ${discount.toLocaleString('id-ID')}` : 'Rp 0';
+            if (totalPriceDisplay) totalPriceDisplay.innerText = `Rp ${finalTotal.toLocaleString('id-ID')}`;
+        }
+
+        // Send Current Estimation to WhatsApp
+        function sendEstimationToWhatsApp() {
+            const bodyName = document.getElementById('summaryBody').innerText;
+            const chassisName = document.getElementById('summaryChassis').innerText;
+            const units = document.getElementById('unitCount').value;
+            const total = document.getElementById('totalPriceDisplay').innerText;
+            const days = document.getElementById('summaryDays').innerText;
+
+            const text = `Halo Tim Karoserihub.id,%0A%0ASaya ingin konsultasi hasil estimasi pembuatan karoseri berikut:%0A- Tipe Karoseri: ${encodeURIComponent(bodyName)}%0A- Tipe Sasis: ${encodeURIComponent(chassisName)}%0A- Jumlah: ${units} Unit%0A- Estimasi Lead Time: ${encodeURIComponent(days)}%0A- Perkiraan Total: ${encodeURIComponent(total)}%0A%0AMohon info ketersediaan slot produksi dan penawaran resmi (SPH). Terima kasih.`;
+            window.open(`https://wa.me/6285721702603?text=${text}`, '_blank');
+        }
+
+        // Copy Spec Summary
+        function copySpecSummary() {
+            const bodyName = document.getElementById('summaryBody').innerText;
+            const chassisName = document.getElementById('summaryChassis').innerText;
+            const units = document.getElementById('unitCount').value;
+            const total = document.getElementById('totalPriceDisplay').innerText;
+
+            const dummyText = `Rincian Estimasi Karoserihub.id:\nBodi: ${bodyName}\nSasis: ${chassisName}\nUnit: ${units} Unit\nEstimasi Total: ${total}\nEmail: Karoseriid@gmail.com\nWhatsApp: +62 857-2170-2603`;
+
+            const tempInput = document.createElement("textarea");
+            tempInput.value = dummyText;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            showToast("Rincian spesifikasi berhasil disalin ke clipboard!");
+        }
+
+        // Spec Modal Operations
+        let currentModalTitle = "";
+        function openSpecModal(title, desc, price, chassis, dim) {
+            currentModalTitle = title;
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDesc').innerText = desc;
+            document.getElementById('modalPrice').innerText = price;
+            document.getElementById('modalChassis').innerText = chassis;
+            document.getElementById('modalDim').innerText = dim;
+
+            document.getElementById('specModal').classList.remove('hidden');
+        }
+
+        function closeSpecModal() {
+            document.getElementById('specModal').classList.add('hidden');
+        }
+
+        function orderViaModal() {
+            closeSpecModal();
+            const text = `Halo Karoserihub.id, saya tertarik untuk mendiskusikan spesifikasi teknis untuk tipe: *${encodeURIComponent(currentModalTitle)}*. Mohon informasi lebih lanjut.`;
+            window.open(`https://wa.me/6285721702603?text=${text}`, '_blank');
+        }
+
+        // Form Submit Handler
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('picName').value;
+            const company = document.getElementById('picCompany').value || "-";
+            const phone = document.getElementById('picPhone').value;
+            const units = document.getElementById('picUnit').value;
+            const notes = document.getElementById('picNotes').value || "-";
+
+            showToast(`Terima kasih Bapak/Ibu ${name}, formulir Anda berhasil dibuat. Mengalihkan ke WhatsApp...`);
+            
+            // Redirect form data directly to WhatsApp
+            const message = `Halo Tim Karoserihub.id,%0A%0ASaya ingin mengajukan permohonan konsultasi teknis karoseri:%0A- *Nama PIC*: ${encodeURIComponent(name)}%0A- *Perusahaan*: ${encodeURIComponent(company)}%0A- *No. Kontak*: ${encodeURIComponent(phone)}%0A- *Kebutuhan*: ${encodeURIComponent(units)}%0A- *Keterangan Spek/Muatan*: ${encodeURIComponent(notes)}%0A%0AMohon tanggapan dari tim Sales Engineer. Terima kasih.`;
+            
+            setTimeout(() => {
+                window.open(`https://wa.me/6285721702603?text=${message}`, '_blank');
+                document.getElementById('consultForm').reset();
+            }, 1000);
+        }
+
+        // Custom Toast Helper
+        function showToast(msg) {
+            const toast = document.getElementById('toastBox');
+            const toastMsg = document.getElementById('toastMessage');
+            toastMsg.innerText = msg;
+            toast.classList.remove('hidden');
+
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 4000);
+        }
+
+        // Initialize calculation on load
+        window.addEventListener('DOMContentLoaded', () => {
+            calculateEstimate();
+        });
+    </script>
+</body>
+</html>
